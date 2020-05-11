@@ -1,24 +1,11 @@
 package q002;
 
-/**
- * Q002 並べ替える
- *
- * dataListに "ID,名字" の形式で20個のデータがあります。
- * これをID順に並べて表示するプログラムを記述してください。
- *
- * dataListの定義を変更してはいけません。
- *
- *
-[出力結果イメージ]
-1,伊藤
-2,井上
-（省略）
-9,清水
-10,鈴木
-11,高橋
-（省略）
-20,渡辺
- */
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
 public class Q002 {
     /**
      * データ一覧
@@ -45,5 +32,19 @@ public class Q002 {
             "14,林",
             "9,清水"
     };
+    public static void main (String args[]) {
+        List<String> list = Arrays.asList(dataList);
+        Map<Integer, String> map = new HashMap<>();
+
+        for(String str : list) {
+            String[] data = str.split(",");
+            map.put(Integer.parseInt(data[0]), data[1]);
+        }
+
+        Map<Integer, String> treeMap = new TreeMap<Integer, String>(map);
+        for (Integer key : treeMap.keySet()) {
+            System.out.println(key + "," + treeMap.get(key));
+        }
+    }
 }
-// 完成までの時間: xx時間 xx分
+// 完成までの時間: 3時間 00分
